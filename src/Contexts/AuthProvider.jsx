@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
-    createUserWithEmailAndPassword,
+  createUserWithEmailAndPassword,
   GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,

@@ -14,6 +14,9 @@ import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
 import AuthProvider from './Contexts/AuthProvider.jsx';
 import AddRecipe from './pages/AddRecipe.jsx';
+import PrivateRoute from './pages/PrivateRoute.jsx';
+import AllRecipes from './pages/AllRecipes.jsx';
+import Loader from './components/Loader.jsx';
 
 const router = createBrowserRouter([
   {
@@ -27,7 +30,14 @@ const router = createBrowserRouter([
       },
       {
         path: "/addRecipe",
-        element:<AddRecipe></AddRecipe>
+        element:(<PrivateRoute>
+          <AddRecipe></AddRecipe>
+        </PrivateRoute>)
+      },
+      {
+        path: "/allRecipes",
+        element: <AllRecipes></AllRecipes>,
+         hydrateFallbackElement:<Loader></Loader>
       },
       {
         path: '/login',

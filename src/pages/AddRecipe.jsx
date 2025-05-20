@@ -1,18 +1,63 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useNavigate } from "react-router";
+import Swal from "sweetalert2";
+import { AuthContext } from "../Contexts/AuthContext";
 
 const AddRecipe = () => {
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const handleAddRecipe = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    const categories = formData.getAll("categories");
+    const newRecipe = {
+      ...Object.fromEntries(formData.entries()),
+      categories,
+      likeCount: 0,
+      userName: user?.displayName || "Anonymous",
+      userEmail: user?.email || "unknown",
+      userPhoto: user?.photoURL || "",
+      createdAt: new Date(),
+    };
+    console.log(newRecipe);
+
+    // send recipe data to the db
+    fetch("http://localhost:3000/recipes", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newRecipe),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Recipe added successfully!",
+            icon: "success",
+            draggable: true,
+          }).then(() => {
+            form.reset();
+            navigate("/allRecipes");
+          });
+        }
+        console.log(data);
+      });
+  };
   return (
     <div className="max-w-3xl mx-auto p-6 bg-orange-50 rounded-xl shadow-lg mt-10">
       <h1 className="text-3xl font-bold text-orange-600 mb-6 text-center">
         🍊 Add New Recipe
       </h1>
-      <form className="space-y-5">
+      <form onSubmit={handleAddRecipe} className="space-y-5">
         <div>
           <label className="block text-orange-700 font-semibold">Image</label>
           <input
             type="text"
             className="w-full border border-orange-300 rounded-md p-2 bg-white"
             placeholder="Photo URL"
+            name="photoURL"
           />
         </div>
 
@@ -22,6 +67,7 @@ const AddRecipe = () => {
             type="text"
             className="w-full border border-orange-300 rounded-md p-2 bg-white"
             placeholder="Delicious Spaghetti"
+            name="title"
           />
         </div>
 
@@ -33,6 +79,7 @@ const AddRecipe = () => {
             className="w-full border border-orange-300 rounded-md p-2 bg-white"
             rows="3"
             placeholder="Tomatoes, Basil, Garlic..."
+            name="ingredients"
           ></textarea>
         </div>
 
@@ -44,6 +91,7 @@ const AddRecipe = () => {
             className="w-full border border-orange-300 rounded-md p-2 bg-white"
             rows="4"
             placeholder="Step-by-step cooking process..."
+            name="instructions"
           ></textarea>
         </div>
 
@@ -51,7 +99,10 @@ const AddRecipe = () => {
           <label className="block text-orange-700 font-semibold">
             Cuisine Type
           </label>
-          <select className="w-full border border-orange-300 rounded-md p-2 bg-white">
+          <select
+            className="w-full border border-orange-300 rounded-md p-2 bg-white"
+            name="cuisineType"
+          >
             <option value="">Select Cuisine</option>
             <option>Italian</option>
             <option>Mexican</option>
@@ -69,6 +120,7 @@ const AddRecipe = () => {
             type="number"
             className="w-full border border-orange-300 rounded-md p-2 bg-white"
             placeholder="30"
+            name="preparationTime"
           />
         </div>
 
@@ -82,7 +134,7 @@ const AddRecipe = () => {
                 key={cat}
                 className="text-orange-700 flex items-center gap-2"
               >
-                <input type="checkbox" />
+                <input type="checkbox" name="categories" value={cat} />
                 {cat}
               </label>
             ))}
@@ -98,12 +150,14 @@ const AddRecipe = () => {
             value="0"
             readOnly
             className="w-full border border-orange-300 rounded-md p-2 bg-orange-100 text-gray-600"
+            name="likeCount"
           />
         </div>
 
         <button
           type="submit"
           className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 rounded-lg shadow-md transition duration-300"
+          value="Add Recipe"
         >
           ➕ Add Recipe
         </button>
