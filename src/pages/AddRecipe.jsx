@@ -17,8 +17,8 @@ const AddRecipe = () => {
       likeCount: 0,
       userName: user?.displayName || "Anonymous",
       userEmail: user?.email || "unknown",
-      userPhoto: user?.photoURL || "",
-      createdAt: new Date(),
+      // userPhoto: user?.photoURL || "",
+      // createdAt: new Date(),
     };
     console.log(newRecipe);
 
@@ -147,7 +147,7 @@ const AddRecipe = () => {
           </label>
           <input
             type="number"
-            value="0"
+            value=""
             readOnly
             className="w-full border border-orange-300 rounded-md p-2 bg-orange-100 text-gray-600"
             name="likeCount"

@@ -17,8 +17,7 @@ const RecipeDetails = () => {
     userName,
   } = recipe;
 
-  const instructionList =
-    typeof instructions === "string" ? instructions.split(/(?<=\d\.)\s*/) : [];
+
 
   return (
     <div className="max-w-5xl mx-auto my-10 p-6 bg-orange-50 rounded-2xl shadow-lg">
@@ -68,11 +67,9 @@ const RecipeDetails = () => {
           <h3 className="text-2xl font-semibold text-orange-600 mt-6 mb-3">
             Steps
           </h3>
-          <ol className="list-decimal list-inside space-y-2 text-gray-700">
-            {instructionList.map((step, index) => (
-              <li key={index}>{step}</li>
-            ))}
-          </ol>
+          <p className="list-decimal list-inside space-y-2 text-gray-700">
+            {instructions}
+          </p>
         </div>
       </Fade>
     </div>
