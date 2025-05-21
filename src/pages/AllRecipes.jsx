@@ -19,5 +19,4 @@ const AllRecipes = () => {
     </div>
   );
 };
-
 export default AllRecipes;

@@ -9,10 +9,10 @@ const Banner = () => {
           "url('https://i.postimg.cc/dVpppYg7/2206-w032-n003-501b-p1-501.jpg')",
       }}
     >
-      {/* Dark Overlay */}
+      
       <div className="absolute inset-0 bg-black/50  z-0 rounded-2xl"></div>
 
-      {/* Content */}
+      
       <div className="relative z-10 text-white max-w-2xl">
         <h1 className="text-4xl md:text-5xl font-extrabold mb-4 drop-shadow-xl">
           Explore Flavors <br /> That Bring People Together

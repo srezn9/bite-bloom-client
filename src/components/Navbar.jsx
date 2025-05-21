@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, NavLink } from "react-router"; // ✅ Correct import
+import { Link, NavLink } from "react-router";
 import { AuthContext } from "../Contexts/AuthContext";
 import { toast } from "react-toastify";
 
@@ -109,12 +109,12 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Center: Desktop Menu */}
+      
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
 
-      {/* Right: User Auth Actions */}
+      
       <div className="navbar-end flex gap-5">
         {user ? (
           <div className="dropdown dropdown-end">

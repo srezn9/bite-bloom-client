@@ -23,7 +23,7 @@ const AddRecipe = () => {
     console.log(newRecipe);
 
     // send recipe data to the db
-    fetch("http://localhost:3000/recipes", {
+    fetch("https://assignment-10-server-gray-beta.vercel.app/recipes", {
       method: "POST",
       headers: {
         "content-type": "application/json",

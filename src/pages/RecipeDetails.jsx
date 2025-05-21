@@ -13,7 +13,7 @@ const RecipeDetails = () => {
     instructions,
     photoURL,
     preparationTime,
-    categories,
+    // categories,
     userName,
   } = recipe;
 

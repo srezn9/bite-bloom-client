@@ -1,11 +1,9 @@
 import React, { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link, useNavigate } from "react-router"; // ✅ fixed router import
+import { Link, useNavigate } from "react-router"; 
 import { toast } from "react-toastify";
 // import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../Contexts/AuthContext";
-// import { auth } from "../firebase.init";
-// import { updatePassword } from "firebase/auth";
 
 const Login = () => {
   const { login, googleLogin } = useContext(AuthContext);
@@ -26,24 +24,6 @@ const Login = () => {
       });
   };
 
-  // const handleForgotPassword = async () => {
-  //   const email = prompt("Enter your email:");
-  //   if (!email) return toast.error("Email is required!");
-
-  //   const currentPassword = prompt("Enter your current password:");
-  //   if (!currentPassword) return toast.error("Current password is required!");
-
-  //   const newPassword = prompt("Enter your new password:");
-  //   if (!newPassword) return toast.error("New password is required!");
-
-  //   try {
-  //     await login(email, currentPassword);
-  //     await updatePassword(auth.currentUser, newPassword);
-  //     toast.success("Password updated successfully!");
-  //   } catch (error) {
-  //     toast.error(error.message);
-  //   }
-  // };
 
   const handleGoogleLogin = () => {
     googleLogin()
@@ -89,7 +69,6 @@ const Login = () => {
           <div>
             <button
               type="button"
-              // onClick={handleForgotPassword}
               className="link link-hover text-orange-700"
             >
               Forgot password?

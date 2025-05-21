@@ -36,14 +36,17 @@ const router = createBrowserRouter([
       },
       {
         path: "/allRecipes",
-        loader: () => fetch("http://localhost:3000/recipes"),
+        loader: () =>
+          fetch("https://assignment-10-server-gray-beta.vercel.app/recipes"),
         element: <AllRecipes></AllRecipes>,
         hydrateFallbackElement: <Loader></Loader>,
       },
       {
         path: "/recipes/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/recipes/${params.id}`),
+          fetch(
+            `https://assignment-10-server-gray-beta.vercel.app/recipes/${params.id}`
+          ),
         element: (
           <PrivateRoute>
             <RecipeDetails />

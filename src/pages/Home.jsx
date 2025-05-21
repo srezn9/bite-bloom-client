@@ -1,14 +1,24 @@
 import React from 'react';
 import Banner from '../components/Banner';
-import { useLoaderData } from 'react-router';
-import AllRecipes from './AllRecipes';
+import TopRecipes from '../components/TopRecipes';
+import ReviewSection from '../components/ReviewSection';
+import RestaurantShowcase from '../components/RestaurantShowcase';
+
 
 const Home = () => {
-    const recipes = useLoaderData();
-    console.log(recipes);
+    
     return (
         <div className='max-w-11/12 mx-auto'>
-            <div className='my-16'><Banner></Banner></div>
+            <section className='my-16'><Banner></Banner></section>
+            <section className='my-16'>
+                <TopRecipes></TopRecipes>
+            </section>
+            <section className='my-16'>
+                <RestaurantShowcase></RestaurantShowcase>
+            </section>
+            <section className='my-16'>
+                <ReviewSection></ReviewSection>
+            </section>
         </div>
     );
 };
