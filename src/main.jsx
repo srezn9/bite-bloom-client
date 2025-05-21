@@ -1,63 +1,73 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App.jsx";
 
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router";
-import MainLayout from './layouts/MainLayout.jsx';
-import Home from './pages/Home.jsx';
-import ErrorPage from './pages/ErrorPage.jsx';
-import Login from './pages/Login.jsx';
-import Register from './pages/Register.jsx';
-import AuthProvider from './Contexts/AuthProvider.jsx';
-import AddRecipe from './pages/AddRecipe.jsx';
-import PrivateRoute from './pages/PrivateRoute.jsx';
-import AllRecipes from './pages/AllRecipes.jsx';
-import Loader from './components/Loader.jsx';
+import { createBrowserRouter, RouterProvider } from "react-router";
+import MainLayout from "./layouts/MainLayout.jsx";
+import Home from "./pages/Home.jsx";
+import ErrorPage from "./pages/ErrorPage.jsx";
+import Login from "./pages/Login.jsx";
+import Register from "./pages/Register.jsx";
+import AuthProvider from "./Contexts/AuthProvider.jsx";
+import AddRecipe from "./pages/AddRecipe.jsx";
+import PrivateRoute from "./pages/PrivateRoute.jsx";
+import AllRecipes from "./pages/AllRecipes.jsx";
+import Loader from "./components/Loader.jsx";
+import RecipeDetails from "./pages/RecipeDetails.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element:<MainLayout></MainLayout>,
+    element: <MainLayout></MainLayout>,
     errorElement: <ErrorPage />,
     children: [
       {
-        path:"/",
-        element: <Home></Home>
+        path: "/",
+        element: <Home></Home>,
       },
       {
         path: "/addRecipe",
-        element:(<PrivateRoute>
-          <AddRecipe></AddRecipe>
-        </PrivateRoute>)
+        element: (
+          <PrivateRoute>
+            <AddRecipe></AddRecipe>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/allRecipes",
+        loader: () => fetch("http://localhost:3000/recipes"),
         element: <AllRecipes></AllRecipes>,
-         hydrateFallbackElement:<Loader></Loader>
+        hydrateFallbackElement: <Loader></Loader>,
       },
       {
-        path: '/login',
-        element: <Login></Login>
+        path: "/recipes/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/recipes/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <RecipeDetails />
+          </PrivateRoute>
+        ),
+        hydrateFallbackElement: <Loader />,
       },
-      {
-        path: '/register',
-        element:<Register></Register>
-      }
-    ]
-  },
 
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
+      },
+    ],
+  },
 ]);
 
-
-
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
-     <AuthProvider>
+    <AuthProvider>
       <RouterProvider router={router} />
-     </AuthProvider>
-  </StrictMode>,
-)
+    </AuthProvider>
+  </StrictMode>
+);
