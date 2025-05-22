@@ -36,6 +36,7 @@ const AddRecipe = () => {
           Swal.fire({
             title: "Recipe added successfully!",
             icon: "success",
+            confirmButtonColor: '#f97316',
             draggable: true,
           }).then(() => {
             form.reset();

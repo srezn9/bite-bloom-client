@@ -59,8 +59,10 @@ const router = createBrowserRouter([
       },
       {
         path: "/myRecipe",
-        element:<MyRecipe></MyRecipe>,
-        // hydrateFallbackElement:<Loader></Loader>,
+        element: <PrivateRoute>
+          <MyRecipe></MyRecipe>
+           </PrivateRoute>
+        ,
       },
 
       {

@@ -8,7 +8,7 @@ const Footer = () => {
           <div className="flex items-center justify-center gap-2">
             <img
               className="w-16 h-16 rounded-full"
-              src="https://i.ibb.co/8ndfHCZw/recipee.jpg"
+              src="https://i.postimg.cc/zBZSg959/recipee.jpg"
               alt="BiteBloom Logo"
             />
             <h2 className="text-2xl font-extrabold text-orange-900">

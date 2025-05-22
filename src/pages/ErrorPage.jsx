@@ -4,7 +4,7 @@ const ErrorPage = () => {
   return (
     <div className="h-screen relative flex items-center justify-center text-center px-4 bg-black">
       <img
-        src="https://i.ibb.co/PZq8zC4t/6054026.jpg"
+        src="https://i.postimg.cc/Dy8J7x3s/6054026.jpg"
         alt=""
         className="absolute inset-0 w-full h-full object-cover opacity-50"
       />

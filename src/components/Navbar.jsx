@@ -100,7 +100,7 @@ const Navbar = () => {
         <div className="flex items-center gap-2">
           <img
             className="w-15 h-15 rounded-4xl"
-            src="https://i.ibb.co/8ndfHCZw/recipee.jpg"
+            src="https://i.postimg.cc/zBZSg959/recipee.jpg"
             alt="BiteBloom Logo"
           />
           <h2 className="text-xl font-bold text-orange-900">
