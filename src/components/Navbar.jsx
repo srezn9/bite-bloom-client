@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../Contexts/AuthContext";
-import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
@@ -9,10 +9,30 @@ const Navbar = () => {
   const handleLogout = () => {
     logout()
       .then(() => {
-        toast.success("Logged out successfully");
+        Swal.fire({
+          toast: true,
+          position: "top-end",
+          icon: "success",
+          title: "Logged out successfully",
+          showConfirmButton: false,
+          timer: 3000,
+          background: "#ea580c",
+          color: "#fff",
+          iconColor: "#fff",
+        });
       })
       .catch((error) => {
-        toast.error(error.message || "Logout failed");
+        Swal.fire({
+          toast: true,
+          position: "top-end",
+          icon: "error",
+          title: error.message || "Logout failed",
+          showConfirmButton: false,
+          timer: 3000,
+          background: "#ea580c",
+          color: "#fff",
+          iconColor: "#fff",
+        });
       });
   };
 
@@ -109,12 +129,10 @@ const Navbar = () => {
         </div>
       </div>
 
-      
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
 
-      
       <div className="navbar-end flex gap-5">
         {user ? (
           <div className="dropdown dropdown-end">

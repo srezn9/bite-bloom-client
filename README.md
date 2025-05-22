@@ -1,12 +1,51 @@
-# React + Vite
+# BiteBloom
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live URL: [https://assignment-10-6af25.web.app/](https://assignment-10-6af25.web.app/)
 
-Currently, two official plugins are available:
+## Project Purpose
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+BiteBloom is a recipe book application designed to connect people through delicious recipes. Users can explore top-rated recipes, view detailed instructions, and like their favorites. It offers a clean, responsive interface with smooth animations and intuitive navigation.
 
-## Expanding the ESLint configuration
+## Key Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- View a collection of recipes with images and descriptions
+- Like recipes (excluding your own)
+- Top 6 most liked recipes on the homepage
+- View detailed recipe pages
+- Firebase Authentication (login/register)
+- Responsive design with TailwindCSS
+- Animations using `react-awesome-reveal` and typewriter effect
+
+## Live Demo
+
+[https://assignment-10-6af25.web.app/](https://assignment-10-6af25.web.app/)
+
+## Tech Stack
+
+- React for UI
+- React Router v7 for routing
+- Firebase for authentication and hosting
+- TailwindCSS and DaisyUI for styling
+- SweetAlert2 for alerts
+- React Icons for iconography
+- React Awesome Reveal for scroll-based animations
+- React Simple Typewriter for animated heading text
+- React Helmet Async for SEO meta management
+
+## NPM Packages Used
+
+- `react`
+- `react-dom`
+- `react-router`
+- `firebase`
+- `tailwindcss`
+- `daisyui`
+- `sweetalert2`
+- `react-icons`
+- `react-awesome-reveal`
+- `react-simple-typewriter`
+-`react-helmet-async`
+
+---
+
+Developed for Assignment-10

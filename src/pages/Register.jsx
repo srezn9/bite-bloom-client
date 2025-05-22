@@ -1,14 +1,28 @@
 import React, { useContext, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link, useNavigate } from "react-router"; // ✅ fixed router import
-import { toast } from "react-toastify";
+import { Link, useNavigate } from "react-router"; 
 // import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../Contexts/AuthContext";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const { register, updateUserProfile, googleLogin } = useContext(AuthContext);
   const navigate = useNavigate();
   const [accepted, setAccepted] = useState(false);
+
+  const showToast = (icon, title) => {
+    Swal.fire({
+      toast: true,
+      position: "top-end",
+      icon,
+      title,
+      showConfirmButton: false,
+      timer: 3000,
+      background: "#ea580c",
+      color: "#fff",
+      iconColor: "#fff",
+    });
+  };
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -19,8 +33,10 @@ const Register = () => {
 
     const uppercase = /[A-Z]/.test(password);
     const lowercase = /[a-z]/.test(password);
+
     if (!uppercase || !lowercase || password.length < 6) {
-      return toast.error(
+      return showToast(
+        "error",
         "Password must have uppercase, lowercase and at least 6 characters."
       );
     }
@@ -31,22 +47,22 @@ const Register = () => {
           displayName: name,
           photoURL: photoURL,
         });
-        toast.success("Registered successfully!");
+        showToast("success", "Registered successfully!");
         navigate("/");
       })
       .catch((error) => {
-        toast.error(error.message);
+        showToast("error", error.message);
       });
   };
 
   const handleGoogleLogin = () => {
     googleLogin()
       .then(() => {
-        toast.success("Logged in with Google!");
+        showToast("success", "Logged in with Google!");
         navigate("/");
       })
       .catch((error) => {
-        toast.error(error.message);
+        showToast("error", error.message);
       });
   };
 

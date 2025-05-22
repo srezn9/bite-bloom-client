@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link, useNavigate } from "react-router"; 
-import { toast } from "react-toastify";
+import { Link, useNavigate } from "react-router";
 // import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../Contexts/AuthContext";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { login, googleLogin } = useContext(AuthContext);
@@ -16,23 +16,62 @@ const Login = () => {
 
     login(email, password)
       .then(() => {
-        toast.success("Logged in successfully!");
+        Swal.fire({
+          toast: true,
+          position: "top-end",
+          icon: "success",
+          title: "Logged in successfully!",
+          showConfirmButton: false,
+          timer: 3000,
+          background: "#ea580c",
+          color: "#fff",
+          iconColor: "#fff",
+        });
         navigate("/");
       })
       .catch((error) => {
-        toast.error(error.message);
+        Swal.fire({
+          toast: true,
+          position: "top-end",
+          icon: "error",
+          title: error.message,
+          showConfirmButton: false,
+          timer: 3000,
+          background: "#ea580c",
+          color: "#fff",
+          iconColor: "#fff",
+        });
       });
   };
-
 
   const handleGoogleLogin = () => {
     googleLogin()
       .then(() => {
-        toast.success("Logged in with Google!");
+        Swal.fire({
+          toast: true,
+          position: "top-end",
+          icon: "success",
+          title: "Logged in with Google!",
+          showConfirmButton: false,
+          timer: 3000,
+          background: "#ea580c",
+          color: "#fff",
+          iconColor: "#fff",
+        });
         navigate("/");
       })
       .catch((error) => {
-        toast.error(error.message);
+        Swal.fire({
+          toast: true,
+          position: "top-end",
+          icon: "error",
+          title: error.message,
+          showConfirmButton: false,
+          timer: 3000,
+          background: "#ea580c",
+          color: "#fff",
+          iconColor: "#fff",
+        });
       });
   };
 
@@ -67,10 +106,7 @@ const Login = () => {
           />
 
           <div>
-            <button
-              type="button"
-              className="link link-hover text-orange-700"
-            >
+            <button type="button" className="link link-hover text-orange-700">
               Forgot password?
             </button>
           </div>
