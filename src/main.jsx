@@ -24,7 +24,9 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
+        loader:()=>fetch('https://assignment-10-server-gray-beta.vercel.app/top-recipes'),
         element: <Home></Home>,
+        hydrateFallbackElement: <Loader></Loader>,
       },
       {
         path: "/addRecipe",

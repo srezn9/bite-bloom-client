@@ -28,7 +28,7 @@ const reviews = [
 const ReviewSection = () => {
   return (
     <div>
-        <h2 className="text-4xl text-orange-600 font-bold p-4 mb-8">
+        <h2 className="text-3xl font-bold text-orange-600 mb-6">
             Voices of the Community
         </h2>
     

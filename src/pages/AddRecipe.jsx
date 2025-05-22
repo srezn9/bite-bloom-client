@@ -147,7 +147,7 @@ const AddRecipe = () => {
           </label>
           <input
             type="number"
-            value=""
+            value="0"
             readOnly
             className="w-full border border-orange-300 rounded-md p-2 bg-orange-100 text-gray-600"
             name="likeCount"
