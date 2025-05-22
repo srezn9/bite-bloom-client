@@ -15,6 +15,7 @@ import PrivateRoute from "./pages/PrivateRoute.jsx";
 import AllRecipes from "./pages/AllRecipes.jsx";
 import Loader from "./components/Loader.jsx";
 import RecipeDetails from "./pages/RecipeDetails.jsx";
+import MyRecipe from "./pages/MyRecipe.jsx";
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,11 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         hydrateFallbackElement: <Loader />,
+      },
+      {
+        path: "/myRecipe",
+        element:<MyRecipe></MyRecipe>,
+        hydrateFallbackElement:<Loader></Loader>,
       },
 
       {

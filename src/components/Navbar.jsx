@@ -56,7 +56,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/my-recipe"
+          to="/myRecipe"
           className={({ isActive }) =>
             isActive
               ? "underline text-orange-600 font-semibold"

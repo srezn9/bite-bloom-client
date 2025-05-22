@@ -14,7 +14,7 @@ const Home = () => {
         <Banner></Banner>
       </section>
       <section className="my-16 ">
-        <h2 className="text-3xl font-bold text-orange-600 mb-6">Top Recipes</h2>
+        <h2 className="text-3xl font-bold text-orange-600 mb-6">Deliciously Popular Right Now!</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {topRecipes.map((recipe) => (
             <TopRecipeCards key={recipe._id} recipe={recipe} />
