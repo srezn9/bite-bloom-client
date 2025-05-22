@@ -3,6 +3,7 @@ import { AuthContext } from "../Contexts/AuthContext";
 import MyRecipeCard from "./MyRecipeCard";
 import Loader from "../components/Loader";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const MyRecipe = () => {
   const { user, loading } = useContext(AuthContext);
@@ -42,7 +43,7 @@ const MyRecipe = () => {
             title: "Deleted!",
             text: "Your recipe has been removed.",
             icon: "success",
-            confirmButtonColor: "#f97316", // Tailwind orange-500
+            confirmButtonColor: "#f97316",
           });
         }
       }
@@ -72,6 +73,9 @@ const MyRecipe = () => {
 
   return (
     <div className="max-w-6xl mx-auto p-4">
+      <Helmet>
+        <title>MyRecipe</title>
+      </Helmet>
       <h2 className="text-2xl font-bold mb-4 text-orange-600">My Recipes</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {recipes.map((recipe) => (

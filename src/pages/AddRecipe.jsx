@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Contexts/AuthContext";
+import { Helmet } from "react-helmet-async";
 
 const AddRecipe = () => {
   const { user } = useContext(AuthContext);
@@ -48,6 +49,9 @@ const AddRecipe = () => {
   };
   return (
     <div className="max-w-3xl mx-auto p-6 bg-orange-50 rounded-xl shadow-lg mt-10">
+      <Helmet>
+        <title>AddRecipe</title>
+      </Helmet>
       <h1 className="text-3xl font-bold text-orange-600 mb-6 text-center">
         🍊 Add New Recipe
       </h1>

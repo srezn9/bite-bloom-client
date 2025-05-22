@@ -1,6 +1,7 @@
 import React from "react";
 import { useLoaderData } from "react-router";
 import RecipeCard from "./RecipeCard";
+import { Helmet } from "react-helmet-async";
 
 
 const AllRecipes = () => {
@@ -8,6 +9,9 @@ const AllRecipes = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 my-12">
+      <Helmet>
+        <title>AllRecipes</title>
+      </Helmet>
       <h1 className="text-3xl font-bold text-orange-700 mb-8 text-center">
         All Recipes
       </h1>

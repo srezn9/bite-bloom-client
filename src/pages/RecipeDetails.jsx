@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useLoaderData } from "react-router";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { Fade } from "react-awesome-reveal";
+import { Helmet } from "react-helmet-async";
 
 const RecipeDetails = () => {
   const recipe = useLoaderData();
@@ -21,6 +22,9 @@ const RecipeDetails = () => {
 
   return (
     <div className="max-w-5xl mx-auto my-10 p-6 bg-orange-50 rounded-2xl shadow-lg">
+      <Helmet>
+        <title>RecipeDetails</title>
+      </Helmet>
       <Fade cascade>
         <div className="grid md:grid-cols-2 gap-6 items-center">
           <img

@@ -16,6 +16,7 @@ import AllRecipes from "./pages/AllRecipes.jsx";
 import Loader from "./components/Loader.jsx";
 import RecipeDetails from "./pages/RecipeDetails.jsx";
 import MyRecipe from "./pages/MyRecipe.jsx";
+import { HelmetProvider } from "react-helmet-async";
 
 const router = createBrowserRouter([
   {
@@ -79,8 +80,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <AuthProvider>
+    <HelmetProvider>
+      <AuthProvider>
       <RouterProvider router={router} />
     </AuthProvider>
+    </HelmetProvider> 
   </StrictMode>
 );

@@ -1,15 +1,18 @@
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router";
 
 const ErrorPage = () => {
   return (
     <div className="h-screen relative flex items-center justify-center text-center px-4 bg-black">
+      <Helmet>
+        <title>Error | 404</title>
+      </Helmet>
       <img
         src="https://i.postimg.cc/Dy8J7x3s/6054026.jpg"
         alt=""
         className="absolute inset-0 w-full h-full object-cover opacity-50"
       />
       <div className="absolute inset-0 bg-black opacity-60"></div>{" "}
-      {/* dark overlay */}
       <div className="relative z-10 text-white max-w-lg">
         <h1 className="text-5xl font-extrabold text-orange-500 drop-shadow-lg mb-4">
           🍽️ Oops!

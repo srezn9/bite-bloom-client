@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router";
-// import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../Contexts/AuthContext";
 import Swal from "sweetalert2";
 
@@ -77,9 +77,9 @@ const Login = () => {
 
   return (
     <div className="card bg-base-100 w-full mx-auto max-w-sm shrink-0 shadow-2xl my-12">
-      {/* <Helmet>
+      <Helmet>
         <title>Login - BiteBloom</title>
-      </Helmet> */}
+      </Helmet>
 
       <h2 className="text-center p-5 text-3xl font-bold text-orange-950">
         Login Now
