@@ -3,27 +3,30 @@ import { useLoaderData } from "react-router";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { Fade } from "react-awesome-reveal";
 import { Helmet } from "react-helmet-async";
+import Loader from "../components/Loader";
 
 const RecipeDetails = () => {
   const recipe = useLoaderData();
   const [liked, setLiked] = useState(false);
+
+  if (!recipe) {
+    return <Loader></Loader>
+  }
 
   const {
     title,
     ingredients,
     instructions,
     photoURL,
+    categories,
     preparationTime,
-    // categories,
     userName,
   } = recipe;
-
-
 
   return (
     <div className="max-w-5xl mx-auto my-10 p-6 bg-orange-50 rounded-2xl shadow-lg">
       <Helmet>
-        <title>RecipeDetails</title>
+        <title>RecipeDetails || BiteBloom</title>
       </Helmet>
       <Fade cascade>
         <div className="grid md:grid-cols-2 gap-6 items-center">
@@ -37,14 +40,24 @@ const RecipeDetails = () => {
             <p className="text-gray-700 mb-2">
               <span className="font-semibold">Chef:</span> {userName}
             </p>
-            {/* <p className="text-gray-700 mb-2">
-              <span className="font-semibold">Category:</span> {categories}
-            </p> */}
+            {categories && categories.length > 0 && (
+              <div className="mb-2 flex flex-wrap gap-2">
+                <span className="font-semibold text-gray-700">Categories:</span>
+                {categories.map((category, index) => (
+                  <span
+                    key={index}
+                    className="bg-orange-200 text-orange-800 text-sm px-2 py-1 rounded-full shadow"
+                  >
+                    {category}
+                  </span>
+                ))}
+              </div>
+            )}
+
             <p className="text-gray-700 mb-2">
               <span className="font-semibold">Cooking Time:</span>{" "}
-              {preparationTime} min
+              {preparationTime} minutes
             </p>
-            {/* <p className="text-gray-700 mb-4">{description}</p> */}
 
             <button
               onClick={() => setLiked(!liked)}

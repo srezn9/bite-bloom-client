@@ -18,8 +18,6 @@ const AddRecipe = () => {
       likeCount: 0,
       userName: user?.displayName || "Anonymous",
       userEmail: user?.email || "unknown",
-      // userPhoto: user?.photoURL || "",
-      // createdAt: new Date(),
     };
     console.log(newRecipe);
 
