@@ -14,43 +14,20 @@ const MyRecipeCard = ({ recipe, onDelete, onUpdate }) => {
     likeCount,
   } = recipe;
 
-  //   const [isModalOpen, setIsModalOpen] = useState(false);
-  //   const [formData, setFormData] = useState({ ...recipe });
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formData, setFormData] = useState({ ...recipe });
 
-  //   const handleDelete = async () => {
-  //     const confirm = window.confirm(
-  //       "Are you sure you want to delete this recipe?"
-  //     );
-  //     if (!confirm) return;
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
-  //     const res = await fetch(`https://your-server-url.com/recipes/${_id}`, {
-  //       method: "DELETE",
-  //     });
-  //     if (res.ok) {
-  //       onDelete(_id);
-  //     }
-  //   };
-
-  //   const handleUpdateSubmit = async (e) => {
-  //     e.preventDefault();
-
-  //     const res = await fetch(`https://your-server-url.com/recipes/${_id}`, {
-  //       method: "PUT",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify(formData),
-  //     });
-
-  //     if (res.ok) {
-  //       const updated = await res.json();
-  //       onUpdate(_id, formData);
-  //       setIsModalOpen(false);
-  //     }
-  //   };
-
-  //   const handleChange = (e) => {
-  //     const { name, value } = e.target;
-  //     setFormData((prev) => ({ ...prev, [name]: value }));
-  //   };
+  const handleUpdateSubmit = async (e) => {
+    e.preventDefault();
+    const { _id, ...safeData } = formData;
+    await onUpdate(recipe._id, safeData);
+    setIsModalOpen(false);
+  };
 
   return (
     <div className="border border-orange-600 border-dotted rounded-xl p-4 shadow-md bg-white">
@@ -94,7 +71,6 @@ const MyRecipeCard = ({ recipe, onDelete, onUpdate }) => {
         </button>
       </div>
 
-      {/* Modal
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-40 z-50 flex items-center justify-center">
           <div className="bg-white rounded-xl p-6 w-full max-w-lg shadow-lg relative">
@@ -177,7 +153,7 @@ const MyRecipeCard = ({ recipe, onDelete, onUpdate }) => {
             </form>
           </div>
         </div>
-      )} */}
+      )}
     </div>
   );
 };

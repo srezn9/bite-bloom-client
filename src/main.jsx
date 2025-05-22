@@ -60,7 +60,7 @@ const router = createBrowserRouter([
       {
         path: "/myRecipe",
         element:<MyRecipe></MyRecipe>,
-        hydrateFallbackElement:<Loader></Loader>,
+        // hydrateFallbackElement:<Loader></Loader>,
       },
 
       {

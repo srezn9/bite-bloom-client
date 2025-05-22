@@ -1,16 +1,23 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../Contexts/AuthContext';
 import MyRecipeCard from './MyRecipeCard';
+import Loader from '../components/Loader';
 
 const MyRecipe = () => {
-    const { user } = useContext(AuthContext);
+    const { user, loading } = useContext(AuthContext);
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
+     if (!user?.email) return;
+
     fetch(`https://assignment-10-server-gray-beta.vercel.app/my-recipes?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => setRecipes(data));
   }, [user]);
+
+   if (loading || !user) {
+    return <Loader></Loader>;
+  }
 
   const handleDelete = async (id) => {
     const confirm = window.confirm("Are you sure?");
@@ -24,22 +31,21 @@ const MyRecipe = () => {
     }
   };
 
-//   const handleUpdate = (id, updatedData) => {
-//     fetch(`https://your-server.com/recipes/${id}`, {
-//       method: "PUT",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify(updatedData),
-//     })
-//       .then((res) => res.json())
-//       .then(() => {
-//         setRecipes((prev) =>
-//           prev.map((r) => (r._id === id ? { ...r, ...updatedData } : r))
-//         );
-//         setShowModal(false);
-//       });
-//     }
+  const handleUpdate = (id, updatedData) => {
+    fetch(`https://assignment-10-server-gray-beta.vercel.app/recipes/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedData),
+    })
+      .then((res) => res.json())
+      .then(() => {
+        setRecipes((prev) =>
+          prev.map((r) => (r._id === id ? { ...r, ...updatedData } : r))
+        );
+      });
+    }
 
 
  return (
@@ -51,7 +57,7 @@ const MyRecipe = () => {
             key={recipe._id}
             recipe={recipe}
             onDelete={handleDelete}
-            // onUpdate={handleUpdate}
+            onUpdate={handleUpdate}
           />
         ))}
       </div>
