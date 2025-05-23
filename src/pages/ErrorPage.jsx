@@ -5,7 +5,7 @@ const ErrorPage = () => {
   return (
     <div className="h-screen relative flex items-center justify-center text-center px-4 bg-black">
       <Helmet>
-        <title>Error | 404</title>
+        <title>Error 404 || BiteBloom</title>
       </Helmet>
       <img
         src="https://i.postimg.cc/Dy8J7x3s/6054026.jpg"
