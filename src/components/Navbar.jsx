@@ -114,6 +114,20 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow"
           >
             {links}
+            {!user && (
+              <>
+                <li>
+                  <Link to="/login" className="btn bg-orange-800 text-white">
+                    Login
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/register" className="btn bg-orange-700 text-white">
+                    Register
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
         <div className="flex items-center gap-2">
@@ -132,7 +146,7 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
 
-      <div className="navbar-end flex gap-5">
+      <div className="navbar-end hidden lg:flex gap-5">
         {user ? (
           <div className="dropdown dropdown-end">
             <div
