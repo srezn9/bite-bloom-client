@@ -19,9 +19,8 @@ const AddRecipe = () => {
       userName: user?.displayName || "Anonymous",
       userEmail: user?.email || "unknown",
     };
-    console.log(newRecipe);
 
-    // send recipe data to the db
+    // sending recipe data to the db
     fetch("https://assignment-10-server-gray-beta.vercel.app/recipes", {
       method: "POST",
       headers: {
@@ -42,7 +41,6 @@ const AddRecipe = () => {
             navigate("/allRecipes");
           });
         }
-        console.log(data);
       });
   };
   return (
