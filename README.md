@@ -53,6 +53,10 @@ BiteBloom is a recipe book application designed to connect people through delici
 1. **Clone the repository**
    ```bash
    git clone https://github.com/srezn9/bite-bloom-client.git
+2.**Go to the project folder**
    cd bite-bloom-client
+3.**Install dependencies**
    npm install
+4.**Start the development server**
    npm run dev
+   ```
