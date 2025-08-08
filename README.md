@@ -44,8 +44,15 @@ BiteBloom is a recipe book application designed to connect people through delici
 - `react-icons`
 - `react-awesome-reveal`
 - `react-simple-typewriter`
--`react-helmet-async`
+- `react-helmet-async`
 
 ---
 
-Developed for Assignment-10
+## 🖥️ Running the Project Locally
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/srezn9/bite-bloom-client.git
+   cd bite-bloom-client
+   npm install
+   npm run dev
